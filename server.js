@@ -43,12 +43,12 @@ app.use('/api', require('./routes/allocationRoutes'));
 
 
 // Serve static files from the React app (comment out this line for now)
-// app.use(express.static(path.join(__dirname, '../client/build')));
+app.use(express.static(path.join(__dirname, '../client/build')));
 
 // Catch-all handler to serve the React app (comment out this line for now)
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
-// });
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+});
 
 // Error handling middleware
 app.use((err, req, res, next) => {
