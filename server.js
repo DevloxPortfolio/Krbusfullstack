@@ -2,9 +2,6 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const multer = require('multer');
-const XLSX = require('xlsx');
-const fs = require('fs');
 const path = require('path');
 
 const app = express();
@@ -31,9 +28,6 @@ app.use('/api', require('./routes/studentRoutes'));
 app.use('/api', require('./routes/busRoutes'));
 app.use('/api', require('./routes/allocationRoutes'));
 
-
-
-
 // Serve static files from the React app (comment out this line for now)
 // app.use(express.static(path.join(__dirname, '../client/build')));
 
@@ -44,8 +38,8 @@ app.use('/api', require('./routes/allocationRoutes'));
 
 // Error handling middleware
 app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).json({ message: 'Something went wrong!', error: err.message });
+  console.error('Error occurred:', err.stack);
+  res.status(err.status || 500).json({ message: err.message || 'Something went wrong!' });
 });
 
 // Start the server
