@@ -19,7 +19,7 @@ if (!dbURI) {
 
 app.use(cors(
   {
-    origin: ["https://krbusdevlox.vercel.app"],
+    origin: ["https://krbusdevlox-2hrn7dub0-devloxportfolios-projects.vercel.app"],
      methods: ["POST","GET"],
      credentials: true
   }
