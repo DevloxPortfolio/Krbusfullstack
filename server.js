@@ -18,8 +18,8 @@ if (!dbURI) {
 } 
 
 app.get("/",(req,res) => {
-  res.json("hello);
-           })
+  res.json("hello")
+           });
 
 // Connect to MongoDB
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
