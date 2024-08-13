@@ -17,13 +17,9 @@ if (!dbURI) {
   process.exit(1);
 } 
 
-app.use(cors(
-  {
-    origin: ["https://krbusdevlox-2hrn7dub0-devloxportfolios-projects.vercel.app"],
-     methods: ["POST","GET"],
-     credentials: true
-  }
-));
+app.get("/",(req,res) => {
+  res.json("hello);
+           })
 
 // Connect to MongoDB
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -31,7 +27,11 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .catch(err => console.error('Failed to connect to MongoDB', err));
 
 // Middleware
-app.use(cors());
+app.use(cors( {
+    origin: ["https://krbusdevlox-2hrn7dub0-devloxportfolios-projects.vercel.app"],
+     methods: ["POST","GET"],
+     credentials: true
+  }));
 app.use(express.json());
 
 // Routes
